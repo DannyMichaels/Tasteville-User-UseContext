@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { verifyUser } from "../services/auth";
 import { useHistory } from "react-router-dom";
+
 const CurrentUserContext = React.createContext([{}, () => {}]);
+
 function CurrentUserProvider(props) {
   const [currentUser, setCurrentUser] = useState(null);
   const history = useHistory();
