@@ -1,5 +1,6 @@
 # Tasteville
 
+(This version of TasteVille takes the original app created by David and passes the user through the app with useContext instead of useState)
 
 ### planning resources:
 
