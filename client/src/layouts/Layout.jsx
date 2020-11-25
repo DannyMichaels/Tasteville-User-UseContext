@@ -1,13 +1,23 @@
 import Header from "../components/Header";
+import { useContext } from "react";
+import { useHistory } from 'react-router-dom'
+import { CurrentUserContext } from "../components/currentUser/CurrentUserContext";
+import { removeToken } from '../services/auth'
 
 export default function Layout(props) {
+  const history =  useHistory()
+  const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
+   const handleLogout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem('authToken');
+    removeToken();
+    history.push('/');
+   }
+  
   return (
     <div className="App">
-      <Header
-        currentUser={props.currentUser}
-        handleLogout={props.handleLogout}
-      />
+      <Header currentUser={currentUser} handleLogout={handleLogout} />
       {props.children}
     </div>
-  )
+  );
 }

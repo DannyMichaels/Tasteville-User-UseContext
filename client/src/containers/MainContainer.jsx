@@ -60,7 +60,7 @@ export default function MainContainer(props) {
         <Foods
         foods={foods}
         handleDelete={handleDelete}
-        currentUser={props.currentUser}
+        // currentUser={props.currentUser}
         />
       </Route>
     </Switch>

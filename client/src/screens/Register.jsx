@@ -1,48 +1,65 @@
-import { useState } from 'react';
+import { useState, useContext } from "react";
+import { CurrentUserContext } from "../components/currentUser/CurrentUserContext";
+import { useHistory } from "react-router-dom";
+import { registerUser } from '../services/auth'
 
-export default function Register(props) {
+export default function Register() {
+  const [currentUser, setCurrentUser] = useContext(CurrentUserContext)
+
+  const history = useHistory()
+    const handleRegister = async (registerData) => {
+    const userData = await registerUser(registerData);
+    setCurrentUser(userData);
+    history.push('/');
+  }
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
-    password: ""
-  })
+    password: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   return (
-    <form onSubmit={(e) => {
-      e.preventDefault();
-      props.handleRegister(formData);
-    }}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleRegister(formData);
+      }}
+    >
       <h3>Register</h3>
-      <label>Username:
+      <label>
+        Username:
         <input
-          type='text'
-          name='username'
+          type="text"
+          name="username"
           value={formData.username}
           onChange={handleChange}
         />
       </label>
       <br />
-      <label>Email:
+      <label>
+        Email:
         <input
-          type='text'
-          name='email'
+          type="text"
+          name="email"
           value={formData.email}
           onChange={handleChange}
         />
       </label>
       <br />
-      <label>Password:
+      <label>
+        Password:
         <input
-          type='password'
-          name='password'
+          type="password"
+          name="password"
           value={formData.password}
           onChange={handleChange}
         />
@@ -50,5 +67,5 @@ export default function Register(props) {
       <br />
       <button>Submit</button>
     </form>
-  )
+  );
 }

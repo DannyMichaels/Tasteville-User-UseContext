@@ -1,7 +1,19 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { CurrentUserContext } from "../components/currentUser/CurrentUserContext"
+import { loginUser } from '../services/auth'
 
-export default function Login(props) {
+export default function Login() {
+  const history = useHistory()
+
+  const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
+
+  const handleLogin = async (loginData) => {
+    const userData = await loginUser(loginData);
+    setCurrentUser(userData);
+    history.push('/');
+  }
+
   const [formData, setFormData] = useState({
     username: "",
     password: ""
@@ -18,7 +30,7 @@ export default function Login(props) {
   return (
     <form onSubmit={(e) => {
       e.preventDefault();
-      props.handleLogin(formData);
+      handleLogin(formData);
     }}>
       <h3>Login</h3>
       <label>Username:
