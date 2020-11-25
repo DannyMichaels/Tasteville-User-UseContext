@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { CurrentUserContext } from "../components/currentUser/CurrentUserContext";
+import { CurrentUserContext } from "../currentUser/CurrentUserContext";
 import { useHistory } from "react-router-dom";
 import { registerUser } from '../services/auth'
 

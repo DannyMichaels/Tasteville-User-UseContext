@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { CurrentUserContext } from "../components/currentUser/CurrentUserContext"
+import { CurrentUserContext } from "../currentUser/CurrentUserContext"
 import { loginUser } from '../services/auth'
 
 export default function Login() {

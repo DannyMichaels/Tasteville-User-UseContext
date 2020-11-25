@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { CurrentUserContext } from "../components/currentUser/CurrentUserContext";
+import { CurrentUserContext } from "../currentUser/CurrentUserContext";
 export default function Foods(props) {
   const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
   

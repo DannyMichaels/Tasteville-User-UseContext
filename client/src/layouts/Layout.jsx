@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import { useContext } from "react";
 import { useHistory } from 'react-router-dom'
-import { CurrentUserContext } from "../components/currentUser/CurrentUserContext";
+import { CurrentUserContext } from "../currentUser/CurrentUserContext";
 import { removeToken } from '../services/auth'
 
 export default function Layout(props) {
